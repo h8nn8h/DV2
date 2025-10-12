@@ -1,4 +1,4 @@
-Latitude,Longitude,sst,Season
+Latitude,Longitude,Season,sst
 -44.0,110.0,Autumn,11.443781628205128
 -44.0,110.0,Spring,10.032242541794872
 -44.0,110.0,Summer,11.770515632564104
@@ -1223,4 +1223,5 @@ Latitude,Longitude,sst,Season
 -10.0,160.0,Spring,29.104988881538464
 -10.0,160.0,Summer,30.02838138
 -10.0,160.0,Winter,28.829909423076924
+
 
