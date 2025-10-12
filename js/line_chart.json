@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-   "title": { "text": "Average Sea Surface Temperature (SST) accross lines of lattitude in waters surrounding Australia" },
+   "title": { "text": ["Average Sea Surface Temperature (SST) accross lines of lattitude", "in waters surrounding Australia"]},
   "width": 400,
   "height": 200,
   "data": {
