@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
-  "height": 400,
+  "width": 400,
+  "height": 300,
   "title": "Sea Surface Temperature around Australia (2000–2025)",
-  "projection": {"type": "equirectangular", "center": [133, -28], "scale": 575},
+  "projection": {"type": "equirectangular", "center": [133, -28], "scale": 400},
   "layer": [
     {
       "data": {
