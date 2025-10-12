@@ -1,12 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
-  "height": 400,
+  "width": 425,
+  "height": 200,
   "background": "#cfe8f3",
   "title": "Humpback Whales around the Australian Coast",
   "projection": {"type": "equirectangular", 
     "center": [133, -28],
-    "scale":575
+    "scale":300
 },
   "layer": [
     {
