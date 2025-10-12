@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Multiple Visualisations | An Example</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>Humpback Whales and their interactions with Australian Waters</h1>
+        <p> Data Visualisation 2 very rough draft </p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-5">
+        <div id="vis3" class="vis-container"></div>
+      </div>
+      <div class="pure-u-4-5">
+        <h2>Where are the Whales?</h2>
+        <p> Humpback Whales can be seen around Australia in different locations during different seasons.  </p>
+      </div>
+      
+    </div>
+    <!-- end pure grid group -->
+
+        <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <h2>Waters in which they Whale?</h2>
+          <p> Whales have been recorded accross Australian waters. This shows the average sea surface temperature averaged annually and between 2000-2025. When this visualisation is complete I will overlay each season of the whale population distribution above over the temperature map to show how they migrate through different waters based on temperature and other factors. </p>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="vis4" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <h2> Whale behaviours </h2>
+          <p> Some records of whale sightings include a description of the activities they undertake. Most entries did not include this description. </p>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="vis1" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-2-3">
+        <div id="vis2" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <h2>Sea Surface Temperatures show a slight increasing trend since 1980. </h2>
+          <p> Whale's migrate North, typically during winter to mate and give birth after spending the summer in Antarctic waters. Higher lattitudes haver warmer waters throughout the year. 
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <!-- end pure grid group -->
+
+       <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div class="description description-left">
+          <h2>References</h2>
+          <p>            
+            General Whale Migration: Reference: https://www.dcceew.gov.au/environment/marine/marine-species/cetaceans/humpback-whales-eastern-australia
+            Sea Surface Temperature Data: 
+            Boyin Huang, Peter W. Thorne, Viva F. Banzon, Tim Boyer, Gennady Chepurin, Jay H. Lawrimore, Matthew J. Menne, Thomas M. Smith, Russell S. Vose, and Huai-Min Zhang (2017): NOAA Extended Reconstructed Sea Surface Temperature (ERSST), Version 5. [indicate subset used]. NOAA National Centers for Environmental Information. doi:10.7289/V5T72FNM. Obtain at NOAA/ESRL/PSD at their website https://www.esrl.noaa.gov/psd/ [access date].
+            https://psl.noaa.gov/data/gridded/data.noaa.ersst.v5.html
+            For graphical lines: naturalearthdata.org
+            Whale location data from: https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/f99d2ad9-23dc-4c67-893e-254fc9c614a6
+            Utilises a map of australia from the ABS: https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files
+            Unit content (studio 8) code was used as a starting point for the map creation
+            Chat GPT was used to clean the data, code, 
+            https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-graticules/
+            Projection Wizard was utilised 
+            FIT3179 Teaching Teams templates were adapted, <a href="https://fit3179.github.io/Vega-Lite/" target="_blank">FIT3179
+            Teaching Team</a>.
+        </p>
+        </div>
+      </div>
+
+    </div>
+    <!-- end pure grid group -->
+
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var specVis1 = "js/bar_chart.json";
+    var specVis2 = "js/line_chart.json";
+    var specVis3 = "js/w9_homework.json";
+    var specVis4 = "js/heat_4.json";
+    vegaEmbed('#vis1', specVis1, { "actions": false });
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+</body>
+
+</html>
