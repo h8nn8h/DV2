@@ -1,0 +1,15 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+   "title": { "text": "Average Sea Surface Temperature (SST) accross lines of lattitude in waters surrounding Australia" },
+  "width": 400,
+  "height": 200,
+  "data": {
+    "url": "https://raw.githubusercontent.com/h8nn8h/DV2/refs/heads/main/data/sst_avg_lat10_yearly.csv"
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "year", "type": "temporal", "title": "Year"},
+    "y": {"field": "sst", "type": "quantitative", "title": "Average SST (°C)"},
+    "color": {"field": "lat", "type": "nominal", "title": "Latitude (°)"}
+  }
+}

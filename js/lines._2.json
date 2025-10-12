@@ -1,0 +1,19 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/h8nn8h/DV2/refs/heads/main/data/sst_avg_by_season.csv"
+  },
+  "facet": {
+    "row": {"field": "lat", "type": "ordinal", "title": "Latitude (°)"}
+  },
+  "spec": {
+    "mark": "line",
+    "encoding": {
+      "x": {"field": "year", "type": "temporal", "title": "Year"},
+      "y": {"field": "sst", "type": "quantitative", "title": "Average SST (°C)","scale": {"domain": [0, 30]}},
+      "color": {"field": "season", "type": "nominal", "title": "Season"}
+    }
+  }
+}

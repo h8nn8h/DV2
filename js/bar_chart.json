@@ -1,0 +1,12 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Recorded behaviour of cited humpback whales" },
+    "data": {
+        "url": "https://raw.githubusercontent.com/h8nn8h/DV2/refs/heads/main/data/behavior_counts.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+        "x": { "field": "count", "type": "quantitative", "title":"Number observed"},
+        "y": { "field": "behavior", "type": "nominal", "title": "Behaviour"}
+    }
+}

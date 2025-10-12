@@ -1,0 +1,47 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "title": "Seasonal Sea Surface Temperature (2000–2025)",
+  "projection": {"type": "equirectangular", "center": [133, -28], "scale": 575},
+
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/h8nn8h/Week_9_Homework/refs/heads/main/js/Aus_Map.json",
+        "format": {"type": "topojson", "feature": "AUS_2021_AUST_GDA2020"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/h8nn8h/DV2/refs/heads/main/data/sst_australia_seasonal_avg_2000_2025.csv"
+      },
+      "transform": [
+        {"calculate": "datum.Longitude - 1", "as": "lon_start"},
+        {"calculate": "datum.Longitude + 1", "as": "lon_end"},
+        {"calculate": "datum.Latitude - 1", "as": "lat_start"},
+        {"calculate": "datum.Latitude + 1", "as": "lat_end"}
+      ],
+      "mark": {"type": "rect"},
+      "encoding": {
+        "x": {"field": "lon_start", "type": "quantitative"},
+        "x2": {"field": "lon_end"},
+        "y": {"field": "lat_start", "type": "quantitative"},
+        "y2": {"field": "lat_end"},
+        "color": {
+          "field": "sst",
+          "type": "quantitative",
+          "scale": {"scheme": "viridis"},
+          "title": "Sea Surface Temp (°C)"
+        },
+        "tooltip": [
+          {"field": "Latitude", "type": "quantitative"},
+          {"field": "Longitude", "type": "quantitative"},
+          {"field": "sst", "type": "quantitative"},
+          {"field": "Season", "type": "nominal"}
+        ]
+      }
+    }
+  ]
+}
