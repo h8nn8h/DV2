@@ -3,7 +3,7 @@
   "width": 500,
   "height": 240,
 "title": {
-    "text": "Seasonal Sea Surface Temperature at Different Lattitudes",
+    "text": "Seasonal Sea Surface Temperature at Different Latitudes",
     "anchor": "start",
     "fontSize": 18,
     "font": "roboto",
@@ -122,3 +122,4 @@
     }
   ]
 }
+
