@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 360,
+  "height": 320,
+  "description": "Binned Ocean Acidity Heatmap for 2021",
+  "title": {
+    "text": "Mean Ocean Acidity (pH) Heatmap 2021",
+    "anchor": "start",
+    "fontSize": 18,
+    "font": "roboto",
+    "subtitle": "White cells do not have recorded data, and are primarily landforms. pH recorded in the middle of each cell.",
+    "subtitleFont": "roboto",
+    "align": "left",
+    "frame": "group"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/h8nn8h/DV2/refs/heads/main/data/data_2021.csv"
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": {
+      "bin": {"maxbins": 80},  
+      "field": "lon",
+      "type": "quantitative",
+      "title": "Longitude"
+    },
+    "y": {
+      "bin": {"maxbins": 90},  
+      "field": "lat",
+      "type": "quantitative",
+      "title": "Latitude"
+    },
+    "color": {
+      "aggregate": "mean",  
+      "field": "ph_total",
+      "type": "quantitative",
+      "title": "Average pH",
+      "scale": {"scheme": "viridis"}
+    },
+    "tooltip": [
+      {"field": "lat", "type": "quantitative","title": "Lattitude"},
+      {"field": "lon", "type": "quantitative", "title": "Longitude"},
+      {"field": "ph_total", "aggregate": "mean", "type": "quantitative", "title": "pH"}
+    ]
+  }
+}
