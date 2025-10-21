@@ -11,6 +11,31 @@
 
   <!-- Styling -->
   <style>
+    /* Style the tooltip box */
+.vg-tooltip {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  color: #003366;
+  background-color: #f9fbfd;
+  border: 1px solid #006994;
+  border-radius: 6px;
+  padding: 6px 8px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Style the field name (key) */
+.vg-tooltip .key {
+  color: black;
+  font-weight: 600;
+  padding-right: 5px;
+}
+
+/* Style the field value */
+.vg-tooltip .value {
+  color: grey;
+  font-weight: 400;
+}
+
     body {
       font-family: 'Open Sans', sans-serif;
       background-color: #f5f8fa;
@@ -143,7 +168,7 @@
     </div>
 
     <div class="side-text">
-      <p><strong>Winter and Summer:</strong> Humpback whales typically migrate north for winter, spending the summers in Antarctic waters feeding on krill. From the atlas of living Australia dataset, more whales were observed around the Australian coast, likely due to the accessibility so their migration south cannot be fully seen here.</p>
+      <p><strong>Winter and Summer:</strong> Humpback whales typically migrate north for winter, spending the summers in Antarctic waters feeding on krill. From the atlas of living Australia dataset, more whales were observed around the Australian coast, likely due to the accessibility so their migration south to Antarctica cannot be fully seen here.</p>
     </div>
   </div>
 
@@ -161,7 +186,7 @@
 </div>
 
   
-  <h2>What were whales observed doing?</h2>
+  <h2>What were Whales observed doing?</h2>
 
 
   <div class="bottom-section">   
@@ -171,14 +196,14 @@
   <div class="vis-item">     
     <div class="text-box">       
       <h3> Identified Behaviours: </h3>       
-      <p> Whales were primarily observed while being active or migrating north and south. This is consistent with the flow map shown above documenting the tracked journeys of the whales. </p>     
+      <p> Whales were primarily observed while being active or migrating north and south. This is consistent with the flow map shown above documenting the tracked journeys of the whales. Whales that are milling refers to them staying in a relatively small boundary, without strong net directional movement. </p>     
     </div>    
   </div> 
 </div> 
 
   <!-- Bottom Sections -->
 
-  <h2>How has whale habitat changed?</h2>
+  <h2>How have the oceans Whales move in changed?</h2>
   <div class="bottom-section">
     <div class="vis-item">
       <div id="whale_behaviour" class="vis-container2"></div>
@@ -192,7 +217,7 @@
       <div id="whale_temperature" class="vis-container2"></div>
       <div class="text-box">
         <h3>Sea Surface Temperature Trends across Seasons </h3>
-        <p>All latitudes show less variation in sea surface temperatures per year during summer. This visualisation highlights the temperature of different waters throughout the year.</p>
+        <p>All latitudes show less variation in sea surface temperatures per year during summer. This visualisation highlights the temperature of different waters throughout the year. Whale migration is in part due to water temperatures, so timings vary year to year as this fluctuates.</p>
       </div>
     </div>
   </div>
@@ -206,7 +231,7 @@
   <div class="vis-item">     
     <div class="text-box">       
       <h3> Ocean Acidity: </h3>       
-      <p> Ocean acidity varies both spatially, and over time (see trends below). It is thought to, along with temperature have an effect on krill habitat. As krill habitat is a primary source of food for humpback whales, this may affect their population and migration in the future. Ocean acidity has been visualised in a broader region surrounding Australia, from the equator to 90°S, and from 100° to 180° in longitude. </p>     
+      <p> Ocean acidity varies both spatially, and over time (see trends below). It is thought to, along with temperature have an effect on krill availability. As krill habitat is a primary source of food for humpback whales, this may affect their population and migration in the future. Specifically with regards to acidification of lower latitudes, as this is where whales primarily feed, so if this is altered and food availability changes it will have a significant impact. Ocean acidity has been visualised in a broader region surrounding Australia, from the equator to 90°S, and from 100° to 180° in longitude. The ocean is more acidic towards the equator, where waters are also warmer. </p>     
     </div>     
   </div> 
 </div> 
@@ -218,7 +243,7 @@
       <div id="acid_aus" class="vis-container2"></div>
       <div class="text-box">
         <h3>General Ocean Acidity Trends</h3>
-        <p> The mean pH of the area analysed shows a steady decrease overtime, highlighting how in general ocean acidity is increasing.  </p>
+        <p> The mean pH of the area analysed shows a steady decrease overtime, highlighting how in general ocean acidity is increasing. The most variability in acidification across the considered areas occurs summer each year. The mean here is considered for the entire area shown in the heat map. This takes a much broader average than the consideration of the southern measurement and shows more large scale trends.</p>
       </div>
     </div>
 
@@ -226,7 +251,7 @@
       <div id="acid_south" class="vis-container2"></div>
       <div class="text-box">
         <h3>Acidity of Southern Waters </h3>
-        <p>Waters below 60°S show a much stronger annual cycle of acidity. It is overall more basic than the more Northern waters, but shows a similar decrease in pH (increase in acidity) from 2010.</p>
+        <p>Waters below 60°S show a much stronger annual cycle of acidity. It is overall more basic than the more Northern waters, but shows a similar decrease in pH (increase in acidity) from 2010. This reinforces the overall acidification of the area. </p>
       </div>
     </div>
   </div>
