@@ -1,10 +1,15 @@
-References: 
-Utilises a map of australia from the ABS: https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files
-For graphical lines: naturalearthdata.org
-Data from: https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/f99d2ad9-23dc-4c67-893e-254fc9c614a6
-Boyin Huang, Peter W. Thorne, Viva F. Banzon, Tim Boyer, Gennady Chepurin, Jay H. Lawrimore, Matthew J. Menne, Thomas M. Smith, Russell S. Vose, and Huai-Min Zhang (2017): NOAA Extended Reconstructed Sea Surface Temperature (ERSST), Version 5. [indicate subset used]. NOAA National Centers for Environmental Information. doi:10.7289/V5T72FNM. Obtain at NOAA/ESRL/PSD at their website https://www.esrl.noaa.gov/psd/ [access date].
-https://psl.noaa.gov/data/gridded/data.noaa.ersst.v5.html
-Whale Migration Data: Utilising the Humpback Whale (HBW data)
-Andrews-Goff, V. (2023) Australia’s east coast humpback whales: satellite tag derived movements on breeding grounds, feeding grounds and along the northern and southern migration, Ver. 1, Australian Antarctic Data Centre - doi:10.26179/mnwc-x310, Accessed: 2025-10-18
-
-Some data has been altered utilising means and isolating years, as well as filtered. 
+  <h2>References:</h2>
+  <p>Ocean Acidification data available, https://www.ncei.noaa.gov/access/ocean-carbon-acidification-data-system/oceans/ndp_103/ndp103.html
+     Gregor, Luke; Gruber, Nicolas (2020). OceanSODA-ETHZ: A global gridded dataset of the surface ocean carbonate system for seasonal to decadal studies of ocean acidification (v2023) (NCEI Accession 0220059). [Ocean Acidification (pH)]. NOAA National Centers for Environmental Information. Dataset. https://doi.org/10.25921/m5wx-ja34. Accessed [21/10/2025].</p>
+  <p>Sea Surface Temperature data available, https://psl.noaa.gov/data/gridded/data.noaa.ersst.v5.html. Boyin Huang, Peter W. Thorne, Viva F. Banzon, Tim Boyer, Gennady Chepurin, Jay H. Lawrimore, Matthew J. Menne, Thomas M. Smith, Russell S. Vose, and Huai-Min Zhang (2017): NOAA Extended Reconstructed Sea Surface Temperature (ERSST), Version 5. [Sea Surface Temperature]. NOAA National Centers for Environmental Information. doi:10.7289/V5T72FNM. Obtain at NOAA/ESRL/PSD at their website https://www.esrl.noaa.gov/psd/ [12/10/2025].</p>
+<p>Whale Migration data, available https://data.aad.gov.au/metadata/AAS_4600_EastAus_humpback_satellite_tracking_data. Andrews-Goff, V. (2023) Australia’s east coast humpback whales: satellite tag derived movements on breeding grounds, feeding grounds and along the northern and southern migration, Ver. 1, Australian Antarctic Data Centre - doi:10.26179/mnwc-x310, Accessed: 2025-10-12</p>
+<p>Humpback Whale Observation Data avaliable, https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/f99d2ad9-23dc-4c67-893e-254fc9c614a6 . Thank you to everyone who contributed to this dataset.</p>
+<p>A map of Australia was obtained from the Australian Beurau of Statistics: https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files</p>
+<p>Maps were simplified and adjusted using https://mapshaper.org/</p>
+<p>Graticals were obtained from: naturalearthdata.org</p>
+<p>Information about Humpback whales, accessed 21/10/2025 from: https://www.dcceew.gov.au/environment/marine/marine-species/cetaceans/humpback-whales-eastern-australia</p>
+<p>Information regarding affects of ocean acidification and sea temperature on whales, accessed 21/10/2025, available: https://outlookreport.gbrmpa.gov.au/threats-responses-and-risks/8-resilience/83-case-studies-recovery-and-decline-ecosystem/837-humpback-whales</p>
+<p>Antarctica Map, Accessed 21/10/2025: Antarctica Boundary from: https://data.humdata.org/dataset/geoboundaries-admin-boundaries-for-antarctica, from the geoBoundaries project. 
+Runfola, D. et al. (2020) geoBoundaries: A global database of political administrative boundaries. PLoS ONE 15(4): e0231866. https://doi.org/10.1371/journal.pone.0231866</p>
+<p>FIT3179 unit code has been adapted to create the visualisations. Additionally artifical intelligence has been utilised in preparing and debugging the code. Furthermore, vegalite example code has been adapted.</p>
+    </div> 
