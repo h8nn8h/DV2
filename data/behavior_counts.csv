@@ -1,4 +1,4 @@
-behavior,count
+behaviour,count
 travelling north,17
 stationary,16
 active,15
@@ -7,4 +7,5 @@ milling,10
 travelling west,5
 travelling east,1
 feeding,1
+
 
