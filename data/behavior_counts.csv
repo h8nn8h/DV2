@@ -1,9 +1,10 @@
 behavior,count
 travelling north,17
 stationary,16
-active (describe in comments),15
+active,15
 travelling south,15
 milling,10
 travelling west,5
 travelling east,1
 feeding,1
+
