@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"title": {
+    "text": "Recorded Behaviour of Observed Humpback Whales",
+    "anchor": "start",
+    "fontSize": 18,
+    "font": "roboto",
+    "subtitle": "View as either a bar chart or donut chart",
+    "subtitleFont": "roboto",
+    "align": "left",
+    "frame": "group"
+  },    "data": {
+    "url": "https://raw.githubusercontent.com/h8nn8h/DV2/refs/heads/main/data/behavior_counts.csv"
+  },
+  "params": [
+    {
+      "name": "chartType",
+      "value": "bar",
+      "bind": {
+        "input": "select",
+        "options": ["bar", "donut"],
+        "labels": ["Bar Chart", "Donut Chart"],
+        "name": "Select chart type: "
+      }
+    }
+  ],
+  "encoding": {
+    "color": {
+      "field": "behaviour",
+      "type": "nominal",
+      "legend": {"title": "Behaviour"}
+    }
+  },
+  "layer": [
+    {
+      "transform": [{"filter": "chartType == 'bar'"}],
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Number observed",
+          "axis": {
+            "titleOpacity": {"expr": "chartType == 'bar' ? 1 : 0"},
+            "labelOpacity": {"expr": "chartType == 'bar' ? 1 : 0"},
+            "tickOpacity": {"expr": "chartType == 'bar' ? 1 : 0"},
+            "domainOpacity": {"expr": "chartType == 'bar' ? 1 : 0"}
+          }
+        },
+        "y": {
+          "field": "behaviour",
+          "type": "nominal",
+          "title": "Behaviour",
+          "axis": {
+            "titleOpacity": {"expr": "chartType == 'bar' ? 1 : 0"},
+            "labelOpacity": {"expr": "chartType == 'bar' ? 1 : 0"},
+            "tickOpacity": {"expr": "chartType == 'bar' ? 1 : 0"},
+            "domainOpacity": {"expr": "chartType == 'bar' ? 1 : 0"}
+          }
+        },
+        "tooltip": [
+          {"field": "behaviour", "type": "nominal"},
+          {"field": "count", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "chartType == 'donut'"}],
+      "mark": {"type": "circle", "fill": "white", "size": 4000}
+    },
+    {
+      "transform": [{"filter": "chartType == 'donut'"}],
+      "mark": {"type": "arc", "innerRadius": 60, "outerRadius": 100},
+      "encoding": {
+        "theta": {"field": "count", "type": "quantitative"},
+        "tooltip": [
+          {"field": "behaviour", "type": "nominal"},
+          {"field": "count", "type": "quantitative"}
+        ]
+      },
+      "view": {"stroke": null},
+      "axes": []
+    }
+  ],
+  "config": {
+    "legend": {"labelFontSize": 12, "titleFontSize": 13},
+    "view": {"stroke": "transparent"}
+  }
+}

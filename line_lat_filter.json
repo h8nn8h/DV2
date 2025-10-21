@@ -1,0 +1,124 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 240,
+"title": {
+    "text": "Seasonal Sea Surface Temperature at Different Lattitudes",
+    "anchor": "start",
+    "fontSize": 18,
+    "font": "roboto",
+    "subtitle": "Average SST over different years for each season",
+    "subtitleFont": "roboto",
+    "align": "left",
+    "frame": "group"
+  }, 
+  "data": {
+    "url": "https://raw.githubusercontent.com/h8nn8h/DV2/refs/heads/main/data/sst_avg_by_season.csv"
+  },
+  "params": [
+    {
+      "name": "LatFilter",
+      "bind": {
+        "input": "select",
+        "options": [-40, -30, -20, -10],
+        "labels": ["-40°", "-30°", "-20°", "-10°"],
+        "name": "Select Latitude: "
+      },
+      "value": -10
+    }
+  ],
+  "transform": [{"filter": "datum.lat == LatFilter"}],
+  "layer": [
+    {
+      "mark": {"type": "line", "point": true},
+      "encoding": {
+        "x": {"field": "year", "type": "temporal", "title": "Year"},
+        "y": {
+          "field": "sst",
+          "type": "quantitative",
+          "title": "Average SST (°C)",
+          "scale": {"domain": [10, 32]}
+        },
+        "color": {
+          "field": "season",
+          "type": "nominal",
+          "title": "Season",
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "columns": 4,
+            "labelFont": "Roboto",
+            "labelFontSize": 11,
+            "titleFont": "Roboto Bold",
+            "titleFontSize": 12,
+            "symbolSize": 60
+          }
+        },
+        "tooltip": [
+          {"field": "year", "type": "temporal", "title": "Year", "timeUnit": "year", "format": "%Y"},
+          {"field": "season", "type": "nominal", "title": "Season"},
+          {"field": "lat", "type": "quantitative", "title": "Latitude (°)"},
+          {"field": "sst", "type": "quantitative", "title": "SST (°C)", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "calculate": "LatFilter == -40 ? 'Coldest waters, with strong winter/spring and summer/autumn seasonal separation.' : LatFilter == -30 ? 'Relatively stable temperatures over time during all seasons.' : LatFilter == -20 ? 'Waters at 20°S have warm Autumn and Spring Waters, with cooler Winter and Springs.' : 'Tropical waters remain warm across all seasons.'",
+          "as": "annotation1"
+        },
+        {
+          "calculate": "LatFilter == -40 ? 1983 : LatFilter == -30 ? 1990 : LatFilter == -20 ? 1982 : 1995",
+          "as": "xpos1"
+        },
+        {
+          "calculate": "LatFilter == -40 ? 14 : LatFilter == -30 ? 21.4 : LatFilter == -20 ? 25.4 : 30.5",
+          "as": "ypos1"
+        }
+      ],
+    "mark": {
+      "type": "text",
+      "fontSize": 12,
+      "color": "black",
+      "align": "left",
+      "dx": 8,
+      "dy": -8
+    },
+      "encoding": {
+        "x": {"field": "xpos1", "type": "quantitative", "scale": {"domain": [1980, 2025]}, "axis": null},
+        "y": {"field": "ypos1", "type": "quantitative"},
+        "text": {"field": "annotation1"}
+      }
+    },
+    {
+      "transform": [
+        {
+          "calculate": "LatFilter == -10 ? ['Highest average SST observed in 2024', 'approaching 30°C in Summer'] : ''",
+          "as": "annotation2"
+        },
+        {
+          "calculate": "LatFilter == -10 ? 2004 : 1980",
+          "as": "xpos2"
+        },
+        {
+          "calculate": "LatFilter == -10 ? 24: 27",
+          "as": "ypos2"
+        }
+      ],
+    "mark": {
+      "type": "text",
+      "fontSize": 12,
+      "color": "black",
+      "align": "left",
+      "dx": 8,
+      "dy": -8
+    },
+      "encoding": {
+        "x": {"field": "xpos2", "type": "quantitative", "scale": {"domain": [1980, 2025]}, "axis": null},
+        "y": {"field": "ypos2", "type": "quantitative"},
+        "text": {"field": "annotation2"}
+      }
+    }
+  ]
+}

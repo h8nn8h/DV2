@@ -1,0 +1,171 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 350,
+  "height": 300,
+  "background": "#cfe8f3",
+"title": {
+    "text": "Humpback Whale Journeys:",
+    "anchor": "start",
+    "fontSize": 18,
+    "font": "roboto",
+    "subtitle": "Select a whale to explore it's journey",
+    "subtitleFont": "roboto",
+    "align": "left",
+    "frame": "group"
+  },  
+  "projection": {"type": "equirectangular", "center": [145, -45], "scale": 250},
+
+  "params": [
+    {
+      "name": "WhaleSelect",
+      "value": 88723,
+      "bind": {
+        "input": "select",
+        "options": [88723, 88741, 88742, 88729, 88730],
+        "labels": ["Whale 1", "Whale 2", "Whale 3", "Whale 4", "Whale 5"],
+        "name": "Select Whale: "
+      }
+    },
+    {
+      "name": "ShowGraticules",
+      "value": true,
+      "bind": {"input": "checkbox", "name": "Show 5 degree Graticules"}
+    }
+  ],
+
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/h8nn8h/DV2/refs/heads/main/js/Aus_Map_Simplified.json",
+        "format": {"type": "topojson", "feature": "Simplified_Aus"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray"}
+    },
+    
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/h8nn8h/DV2/refs/heads/main/js/geoBoundaries-ATA-ADM0.topojson",
+        "format": {"type": "topojson", "feature": "ATAADM0gbOpen"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/h8nn8h/Week_9_Homework/refs/heads/main/js/ne_10m_graticules_5.json",
+        "format": {"type": "topojson", "feature": "ne_10m_graticules_5"}
+      },
+      "transform": [{"filter": "ShowGraticules"}],
+      "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+    },
+    {
+    "data": {
+      "values": [
+        {"longitude": 133, "latitude": -25, "label": "Australia", "font": "roboto"},
+        {"longitude": 133, "latitude": -70, "label": "Antarctica", "font": "roboto"}
+      ]
+    },
+    "mark": {
+      "type": "text",
+      "fontSize": 14,
+      "fontWeight": "bold",
+      "color": "#1a1a1a",
+      "align": "center",
+      "baseline": "middle"
+    },
+    "encoding": {
+      "longitude": {"field": "longitude", "type": "quantitative"},
+      "latitude": {"field": "latitude", "type": "quantitative"},
+      "text": {"field": "label"}
+    }
+  },
+    {
+    "data": {
+      "values": [
+        {"Argos_PTT": 88723, "label1": "Whale 1 was tracked from late October 2008", "longitude": 110, "latitude": -50},
+        {"Argos_PTT": 88741, "label1": "Whale 2 was tracked from mid November 2008", "longitude": 105, "latitude": -50},
+        {"Argos_PTT": 88742, "label1": "Whale 3 was tracked from late June 2009 until", "longitude": 105, "latitude": -48},
+        {"Argos_PTT": 88729, "label1": "Whale 4 was tracked from late October 2008", "longitude": 126, "latitude": -61},
+        {"Argos_PTT": 88730, "label1": "Whale 5 was tracked from late June 2009 until", "longitude": 105, "latitude": -48}
+            ]
+    },
+    "transform": [{"filter": "datum.Argos_PTT == WhaleSelect"}],
+    "mark": {
+      "type": "text",
+      "fontSize": 12,
+      "color": "black",
+      "align": "left",
+      "dx": 5,
+      "dy": -5
+    },
+    "encoding": {
+      "longitude": {"field": "longitude", "type": "quantitative"},
+      "latitude": {"field": "latitude", "type": "quantitative"},
+      "text": {"field": "label1"}
+    }
+  }, 
+      {
+    "data": {
+      "values": [
+        {"Argos_PTT": 88723, "label2": "to mid January 2009 as it travelled south.", "longitude": 110, "latitude": -53},
+        {"Argos_PTT": 88741, "label2": "until April 2009, heading south into Antarctic waters", "longitude": 105, "latitude": -53},
+        {"Argos_PTT": 88742, "label2": "mid July 2009, journeying north up the coast of Queensland", "longitude": 105, "latitude": -51},
+        {"Argos_PTT": 88729, "label2": "until early Feburary 2009, heading south west.", "longitude": 126, "latitude": -64},
+        {"Argos_PTT": 88730, "label2": "mid August 2009, heading north up the coast of Queensland.", "longitude": 105, "latitude": -51}      ]
+    },
+    "transform": [{"filter": "datum.Argos_PTT == WhaleSelect"}],
+    "mark": {
+      "type": "text",
+      "fontSize": 12,
+      "color": "black",
+      "align": "left",
+      "dx": 5,
+      "dy": -5
+    },
+    "encoding": {
+      "longitude": {"field": "longitude", "type": "quantitative"},
+      "latitude": {"field": "latitude", "type": "quantitative"},
+      "text": {"field": "label2"}
+    }
+  },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/h8nn8h/DV2/main/data/3.HBW_ssm_locs.csv",
+        "format": {"type": "csv", "parse": {"GMT": "utc:'%d/%m/%Y %H:%M'"}} 
+      },
+      "transform": [
+        {"filter": "datum.Argos_PTT == WhaleSelect"},
+        {"window": [{"op": "rank", "as": "order"}], "sort": [{"field": "GMT"}]}
+      ],
+      "mark": {"type": "line", "strokeWidth": 2, "color": "black"},
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "order": {"field": "order"},
+        "tooltip": [
+          {"field": "Argos Position Tracking Terminal Number"},
+          {"field": "GMT"},
+          {"field": "Longitude"},
+          {"field": "Latitude"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/h8nn8h/DV2/main/data/3.HBW_ssm_locs.csv",
+        "format": {"type": "csv", "parse": {"GMT": "utc:'%d/%m/%Y %H:%M'"}} 
+      },
+      "transform": [{"filter": "datum.Argos_PTT == WhaleSelect"}],
+      "mark": {"type": "circle", "color": "red", "size": 3},
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "tooltip": [
+          {"field": "Argos_PTT"},
+          {"field": "GMT"},
+          {"field": "Longitude"},
+          {"field": "Latitude"}
+        ]
+      }
+    }
+  ]
+}

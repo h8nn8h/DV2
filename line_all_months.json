@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 240,
+"title": {
+    "text": "Seasonal Sea Surface Temperature across Seasons",
+    "anchor": "start",
+    "fontSize": 18,
+    "font": "roboto",
+    "subtitle": "Average SST over different years for each season and lattitude",
+    "subtitleFont": "roboto",
+    "align": "left",
+    "frame": "group"
+  }, 
+  "data": {
+    "url": "https://raw.githubusercontent.com/h8nn8h/DV2/refs/heads/main/data/sst_avg_by_season.csv"
+  },
+  "params": [
+    {
+      "name": "SeasonFilter",
+      "bind": {
+        "input": "select",
+        "options": ["Autumn", "Winter", "Spring", "Summer"],
+        "name": "Select Season: "
+      },
+      "value": "Autumn"
+    }
+  ],
+  "transform": [
+    {"filter": "datum.season == SeasonFilter"}
+  ],
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "temporal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "sst",
+      "type": "quantitative",
+      "title": "Average SST (°C)",
+      "scale": {"domain": [10, 32]}
+    },
+    "color": {
+      "field": "lat",
+      "type": "nominal",
+      "title": "Latitude (°)",
+      "legend": {
+        "orient": "top",
+        "direction": "horizontal",
+        "columns": 4,
+        "labelFont": "Roboto",
+        "labelFontSize": 11,
+        "titleFont": "Roboto Bold",
+        "titleFontSize": 12,
+        "symbolSize": 60
+      }
+    },
+    "tooltip": [
+      {"field": "year", "type": "temporal", "title": "Year", "timeUnit": "year", "format": "%Y"},
+      {"field": "season", "type": "nominal", "title": "Season"},
+      {"field": "lat", "type": "quantitative", "title": "Latitude (°)"},
+      {"field": "sst", "type": "quantitative", "title": "SST (°C)", "format": ".2f"}
+    ]
+  }
+}
