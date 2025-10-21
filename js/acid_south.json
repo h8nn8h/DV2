@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Mean Ocean Acidity in Southern Waters",
+    "anchor": "start",
+    "fontSize": 18,
+    "font": "roboto",
+    "subtitle": "Recorded monthly. Filled in blue band shows the standard deviation across recorded areas.",
+    "subtitleFont": "roboto",
+    "align": "left",
+    "frame": "group"
+  }, 
+  "width": 400,
+  "height": 200,
+  "data": {"url": "https://raw.githubusercontent.com/h8nn8h/DV2/refs/heads/main/data/ocean_acidity_southern_2010_onwards.csv"},
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "time", "type": "temporal", "title": "Date"},
+    "y": {"aggregate": "mean", "field": "ph_total", "type": "quantitative", "title": "Mean pH"}
+  },
+  "layer": [
+    {
+      "mark": "line",
+      "encoding": {
+        "x": {"field": "time", "type": "temporal"},
+        "y": {"aggregate": "mean", "field": "ph_total", "scale": {"domain": [8, 8.2]}}
+      }
+    },
+    {
+      "mark": {"type": "errorband", "extent": "stdev"},
+      "encoding": {
+        "x": {"field": "time", "type": "temporal"},
+        "y": {"field": "ph_total", "scale": {"domain": [8, 8.2]}}
+      }
+    }, 
+{
+      "data": {
+        "values": [
+          {"time": "2010-01-01", "ph": 8.16, "label": "Ocean acidity (pH low) is at an annual maximum during winter and spring"} 
+        ]
+      },
+      "mark": {
+      "type": "text",
+      "fontSize": 12,
+      "color": "black",
+      "align": "left",
+      "dx": 5,
+      "dy": -5
+    },
+      "encoding": {
+        "x": {"field": "time", "type": "temporal"},
+        "y": {"field": "ph", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    }
+  ]
+}
